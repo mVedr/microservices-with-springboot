@@ -1,0 +1,18 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: QUIZ-SERVICE
+          predicates:
+            - Path=/quiz/**
+          uri: http://localhost:8081
+        - id: QUESTION-SERVICE
+          predicates:
+            - Path=/question/**
+          uri: http://localhost:8082
+        
